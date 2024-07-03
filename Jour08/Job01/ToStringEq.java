@@ -43,22 +43,16 @@ class Rectangle {
 
     @Override
     public String toString() {
-        return "Rectangle :\n largeur = " + largeur + "\n hauteur = " + hauteur;
+        return "Rectangle :\n largeur = " + getLargeur() + "\n hauteur = " + getHauteur();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        else if (obj == this) {
-            return true;
-        }
-        else if (obj.getClass() != this.getClass()) {
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
         Rectangle rect = (Rectangle) obj;
-        return (rect.getLargeur() == largeur && rect.getHauteur() == hauteur);
+        return rect.getLargeur() == getLargeur() && rect.getHauteur() == getHauteur();
     }
 }
 
@@ -76,21 +70,15 @@ class RectangleColore extends Rectangle {
 
     @Override
     public String toString() {
-        return "Rectangle :\n largeur = " + getLargeur() + "\n hauteur = " + getHauteur() + "\n couleur = " + couleur;
+        return super.toString() + "\n couleur = " + getCouleur();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        else if (obj == this) {
-            return true;
-        }
-        else if (obj.getClass() != this.getClass()) {
+        if (!super.equals(obj)) {
             return false;
         }
         RectangleColore rect = (RectangleColore) obj;
-        return (rect.getLargeur() == getLargeur() && rect.getHauteur() == getHauteur() && rect.getCouleur().equals(couleur));
+        return rect.getCouleur().equals(getCouleur());
     }
 }
