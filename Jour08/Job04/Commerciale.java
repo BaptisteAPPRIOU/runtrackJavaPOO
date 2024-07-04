@@ -52,14 +52,15 @@ public class Commerciale {
         Commerciale commerciale = new Commerciale();
         Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.println("--------Gestion commerciale------------");
-            System.out.println("1) Ajouter un article");
-            System.out.println("2) Supprimer un article");
-            System.out.println("3) Ajouter un client");
-            System.out.println("4) Supprimer un client");
-            System.out.println("5) Passer une commande");
-            System.out.println("6) Annuler une commande");
-            System.out.println("0) Quitter");
+            System.out.println("+----------Gestion commerciale----------+");
+            System.out.println("| 1) Ajouter un article                 |");
+            System.out.println("| 2) Supprimer un article               |");
+            System.out.println("| 3) Ajouter un client                  |");
+            System.out.println("| 4) Supprimer un client                |");
+            System.out.println("| 5) Passer une commande                |");
+            System.out.println("| 6) Annuler une commande               |");
+            System.out.println("| 0) Quitter                            |");
+            System.out.println("+---------------------------------------+");
 
             System.out.println("Entrez un choix : ");
             String choix = sc.nextLine();
@@ -86,6 +87,19 @@ public class Commerciale {
                     break;
 
                 case "2":
+                    if (commerciale.articles.size() == 0) {
+                        System.out.println("Pas d'article à supprimer");
+                        System.out.println("Press Enter to continue...");
+                        sc.nextLine();
+                        commerciale.nettoyerEcran();
+                        break;
+                    }
+                    else {
+                        System.out.println("Liste des articles : ");
+                        for (Article a : commerciale.articles) {
+                            System.out.println("Référence: " + a.getReference() + "| Désignation: " + a.getDesignation());
+                        }
+                    }
                     System.out.print("Entrez la référence de l'article à supprimer : ");
                     ref = sc.nextInt();
                     sc.nextLine();
@@ -125,6 +139,19 @@ public class Commerciale {
                     break;
 
                 case "4":
+                    if (commerciale.clients.size() == 0) {
+                        System.out.println("Pas de client à supprimer");
+                        System.out.println("Press Enter to continue...");
+                        sc.nextLine();
+                        commerciale.nettoyerEcran();
+                        break;
+                    }
+                    else {
+                        System.out.println("Liste des clients : ");
+                        for (Client c : commerciale.clients) {
+                            System.out.println("Identité: " + c.getIdentite() + "| Nom social: " + c.getNomSocial());
+                        }
+                    }
                     System.out.print("Entrez l'identité du client à supprimer : ");
                     id = sc.nextInt();
                     sc.nextLine();
@@ -161,6 +188,19 @@ public class Commerciale {
                     break;
 
                 case "6":
+                    if (commerciale.commandes.size() == 0) {
+                        System.out.println("Pas de commande à annuler");
+                        System.out.println("Press Enter to continue...");
+                        sc.nextLine();
+                        commerciale.nettoyerEcran();
+                        break;
+                    }
+                    else {
+                        System.out.println("Liste des commandes : ");
+                        for (Commande c : commerciale.commandes) {
+                            System.out.println("Référence: " + c.getNumeroCommande());
+                        }
+                    }
                     System.out.print("Entrez la référence de la commande à annuler : ");
                     numC = sc.nextInt();
                     sc.nextLine();
