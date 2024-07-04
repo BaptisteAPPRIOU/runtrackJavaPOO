@@ -34,7 +34,7 @@ public class Commerciale {
     }
 
     public void nettoyerEcran() {
-        try {                                                                               // Clear the screen            
+        try {
             String os = System.getProperty("os.name").toLowerCase();
             ProcessBuilder processBuilder;
             if (os.contains("win")) {
